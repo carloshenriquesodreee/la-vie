@@ -4,7 +4,7 @@ use la_vie;
 
 /*criando as tabelas*/
 create table psicologo (
-psicologo_id integer not null primary key ,  
+psicologo_id integer not null primary key auto_increment ,  
 nome varchar(245) not null,
 email varchar(245) not null,
 senha varchar(245) not null,
@@ -12,16 +12,25 @@ apresentacao varchar(245) not null
 );
 
 create table paciente (
-paciente_id integer not null primary key ,  
+paciente_id integer not null primary key auto_increment,  
 nome varchar(245) not null,
 email varchar(245) not null,
 idade date not null
 );
 
 create table atendimento (
-atendimento_id integer not null primary key,
+atendimento_id integer not null primary key auto_increment,
 data_atendimento date not null,
 observacao varchar(245) not null,
 paciente_id integer not null,
 constraint fk_paciente foreign key (paciente_id) references paciente(paciente_id)
+);
+
+create table usuarios (
+id integer not null primary key auto_increment ,
+nome varchar(245) not null,
+email varchar(245) not null,
+senha varchar(245) not null,
+createdAt datetime NOT NULL,
+updatedAt datetime NOT NULL
 );
