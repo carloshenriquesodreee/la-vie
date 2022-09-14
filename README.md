@@ -17,8 +17,8 @@
 
 <p align="left">Um grupo de psicólogos se juntaram e criaram a
 clínica La Vie - Saúde Mental que oferece
-diversos tipos de terapia.</p>
-<p align="left">Para ajudar nos atendimentos, eles precisam de uma API que permita criar registros de
+diversos tipos de terapia. 
+Para ajudar nos atendimentos, eles precisam de uma API que permita criar registros de
 psicólogos, pacientes e prontuários.</p>
 
 <hr>

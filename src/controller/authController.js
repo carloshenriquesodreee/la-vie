@@ -1,7 +1,8 @@
-const { Usuarios } = require("../models");
+const { Psicologos } = require("../models");
 const jwt = require('jsonwebtoken');
 const secret = require("../configs/secret")
 const bcrypt = require('bcryptjs');
+
 
 
 const AuthController = {
@@ -9,24 +10,24 @@ const AuthController = {
     async login(req, res){
     const {email, senha} = req.body;
 
-    const usuario = await Usuarios.findOne({
+    const psicologo = await Psicologos.findOne({
         where: {
           email,
         },
     });
 
-    if (!usuario){
+    if (!psicologo){
      return res.status(401).json("E-mail ou senha inválido, verifique e tente novamente");
     }
 
-    if(!bcrypt.compareSync(senha, usuario.senha)) {
+    if(!bcrypt.compareSync(senha, psicologo.senha)) {
      return res.status(401).json("E-mail ou senha inválido, verifique e tente novamente")
     }
 
     const token = jwt.sign({
-     id: usuario.id, 
-     email: usuario.email,
-     nome: usuario.nome,
+     id: psicologo.id, 
+     email: psicologo.email,
+     nome: psicologo.nome,
     },
     secret.key
     );
