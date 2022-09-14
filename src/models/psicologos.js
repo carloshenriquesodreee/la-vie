@@ -1,30 +1,37 @@
-const sequelize = require("sequelize");
 const db = require("../database");
+const { DataTypes } = require("sequelize");
+
 
 const psicologo = db.define(
   "psicologo",
   {
     psicologo_id: {
-      type: sequelize.DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
     nome: {
-      type: sequelize.DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     email: {
-      type: sequelize.DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     senha: {
-      type: sequelize.DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     apresentacao: {
-      type: sequelize.DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
+    },
+     createdAt: {
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
     },
   },
   {
     tableName: "psicologo",
-    timestamps: false,
+
   }
 );
 
