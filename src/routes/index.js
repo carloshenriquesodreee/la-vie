@@ -8,9 +8,10 @@ const authLoginValidation = require("../validations/auth/login");
 const auth = require("../middlewares/auth")
 const routes = express.Router();
 
+routes.get("/paciente/:id", pacienteController.listOne);
 routes.get("/pacientes", pacienteController.listarPaciente);
-routes.get("/pacientes/:id", pacienteController.listOne);
-routes.post("/new-paciente", pacienteController.registerPacientes)
+routes.post("/new-paciente", pacienteController.registerPacientes);
+routes.put("/atualizar-paciente", pacienteController.updatePacientes);
 routes.get("/psicologo", psicologoController.listarPsicologo);
 routes.post("/usuarios", usuarioCreateValidation, usuariosController.registro);
 routes.post("/login", authLoginValidation, authController.login)

@@ -25,7 +25,27 @@ const pacienteController = {
       idade
     })
     res.json(newPaciente)
-  }
+  },
+  updatePacientes: async (req, res) => {
+    const { id } = req.params;
+    const { paciente_id, nome, email, idade} = req.body
+    const pacienteAtualizado = await paciente.update(
+      {
+        paciente_id,
+        nome,
+        email,
+        idade
+      },
+      {
+        where: {
+          paciente_id,
+        },
+      }
+    );
+
+    res.json("departamento Atualizado");
+  },
 
 };
+
 module.exports = pacienteController;
