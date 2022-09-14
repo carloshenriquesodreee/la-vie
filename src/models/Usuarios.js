@@ -18,12 +18,12 @@ const Usuarios = db.define(
     senha: {
       type: DataTypes.STRING,
     },
-    createdAt: {
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-    },
+    // createdAt: {
+    //   type: DataTypes.DATE,
+    // },
+    // updatedAt: {
+    //   type: DataTypes.DATE,
+    // },
   },
   {
     tableName: "usuarios",
