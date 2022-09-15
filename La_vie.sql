@@ -6,7 +6,7 @@ use la_vie;
 create table psicologo (
 psicologo_id integer not null primary key auto_increment ,  
 nome varchar(245) not null,
-email varchar(245) not null,
+email varchar(245) not null unique,
 senha varchar(245) not null,
 apresentacao varchar(245) not null,
 createdAt datetime NOT NULL,

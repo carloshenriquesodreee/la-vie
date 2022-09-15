@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 const secret = require("../configs/secret")
 const bcrypt = require('bcryptjs');
 
-
-
 const AuthController = {
 
     async login(req, res){
