@@ -1,8 +1,8 @@
 const sequelize = require("sequelize");
 const db = require("../database");
 
-const pacientes = db.define(
-  "paciente",
+const Pacientes = db.define(
+  "Pacientes",
   {
     paciente_id: {
       type: sequelize.DataTypes.INTEGER,
@@ -25,4 +25,4 @@ const pacientes = db.define(
   }
 );
 
-module.exports = pacientes;
+module.exports = Pacientes;

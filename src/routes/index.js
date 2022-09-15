@@ -10,11 +10,15 @@ const routes = express.Router();
 
 routes.get("/paciente/:id", pacienteController.listOne);
 routes.get("/pacientes", pacienteController.listarPaciente);
-routes.get("/pacientes/:id", pacienteController.listOne);
-routes.post("/pacientes", pacienteController.registerPacientes)
+routes.post("/pacientes", pacienteController.registerPacientes);
+
 routes.get("/psicologos", psicologoController.listarPsicologo);
 routes.post("/psicologos", psicologoCreateValidation, psicologoController.registro);
+
+routes.get("/atendimentos", atendimentoController.listarAtendimentos);
+routes.get("/atendimentos/:id", atendimentoController.listarUmAtendimento);
 routes.post("/atendimentos", auth, atendimentoController.cadastrarAtendimento);
-routes.post("/login", authLoginValidation, authController.login)
+
+routes.post("/login", authLoginValidation, authController.login);
 
 module.exports = routes;

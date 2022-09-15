@@ -1,25 +1,56 @@
-const Atendimento = require("../models/atendimentos")
+const { Atendimentos, Pacientes, Psicologos } = require("../models");
 
-const atendimentoController = {
+const atendimentosController = {
+  
+  listarAtendimentos: async (req, res) => {
+  
+    try{
+    const listaAtendimentos = await Atendimentos.findAll({
+      include: [{model: Psicologos},
+    ],});
 
-async cadastrarAtendimento(req, res) {
+    return res.status(200).json(listaAtendimentos)
+  } catch(error){
+    console.log(error);
+    return res
+    .status(404)
+    .json("Ocorreu algum erro, contate o suporte")
+  };
+  },
 
+  listarUmAtendimento: async (req, res) => {
     try {
-      const { paciente_id, data_atendimento, observacao } = req.body;
-      const cadastrarAtendimento = await Atendimento.create({
-        paciente_id,
+      const { id } = req.params;
+      const listarAtendimento = await Atendimentos.findByPk(id)
+
+      res.status(200).json(listarAtendimento);
+    } catch (error) {
+      console.log(error);
+
+      return res
+        .status(404)
+        .json(
+          "id não encontrado"
+        );
+    };
+  },
+
+  cadastrarAtendimento: async (req, res) => {
+    console.log(req.auth);
+
+    const { data_atendimento, observacao, psicologo_id, paciente_id } = req.body; 
+    try {
+      const novoAtendimento = await Atendimentos.create({
         data_atendimento,
         observacao,
+        psicologo_id,
+        paciente_id
       });
-
-      if (!cadastrarAtendimento) {
-        res.status(400).json("Houve um erro na requisição.");
-      } else {
-        res.status(201).json(cadastrarAtendimento);
-      }
+      res.status(201).json(novoAtendimento);
     } catch (error) {
-      res.status(400).json({ error });
-    }
-  }, }
+      console.error(error);
+    };
+  },
+};
 
-  module.exports = atendimentoController;
+module.exports = atendimentosController;
