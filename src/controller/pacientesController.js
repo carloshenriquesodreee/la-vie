@@ -2,49 +2,108 @@ const paciente = require("../models/pacientes");
 
 const pacienteController = {
   listarPaciente: async (req, res) => {
-    const listPacientes = await paciente.findAll({
-      attributes: ["paciente_id", "nome", "email", "idade"]
-    });
+    try {
+      const listPacientes = await paciente.findAll({
+        attributes: ["paciente_id", "nome", "email", "idade"]
+      });
 
-    return res.json(listPacientes);
+      return res.json(listPacientes);
+    } catch (error) {
+      console.log(error);
+
+      return res
+        .status(404)
+        .json(
+          "erro na consulta, tente novamente mais tarde ou contate o suporte."
+        );
+    }
   },
 
   listOne: async (req, res) => {
-    const { id } = req.params;
-    const listarPaciente = await paciente.findByPk(id)
+    try {
+      const { id } = req.params;
+      const listarPaciente = await paciente.findByPk(id)
 
-    res.status(200).json(listarPaciente);
+      res.status(200).json(listarPaciente);
+    } catch (error) {
+      console.log(error);
+
+      return res
+        .status(404)
+        .json(
+          "erro ao tentar lista os pacientes, tente novamente mais tarde ou contate o suporte."
+        );
+    }
   },
 
   registerPacientes: async (req, res) => {
-    const {paciente_id, nome, email, idade} = req.body
-    const newPaciente = await paciente.create({
-      paciente_id,
-      nome,
-      email,
-      idade
-    })
-    res.json(newPaciente)
-  },
-  updatePacientes: async (req, res) => {
-    const { id } = req.params;
-    const { paciente_id, nome, email, idade} = req.body
-    const pacienteAtualizado = await paciente.update(
-      {
+    try {
+      const { paciente_id, nome, email, idade } = req.body
+      const newPaciente = await paciente.create({
         paciente_id,
         nome,
         email,
         idade
-      },
-      {
-        where: {
-          paciente_id,
-        },
-      }
-    );
-
-    res.json("departamento Atualizado");
+      })
+      res.json(newPaciente);
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(404)
+        .json(
+          "erro ao tentar registra um paciente, tente novamente mais tarde ou contate o suporte."
+        );
+    }
   },
+  async deletarPaciente(req, res) {
+    try {
+      const { id } = req.params;
+
+      await paciente.destroy(
+        {
+          where: {
+            paciente_id: id
+          },
+        });
+      res.json("Paciente Deletado");
+
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(404)
+        .json(
+          "erro ao deletar um paciente, tente novamente mais tarde ou contate o suporte."
+        )
+    }
+  },
+  updatePacientes: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { paciente_id, nome, email, idade } = req.body
+      const pacienteAtualizado = await paciente.update(
+        {
+          paciente_id,
+          nome,
+          email,
+          idade
+        },
+        {
+          where: {
+            paciente_id,
+          },
+        }
+      );
+      res.json("Paciente Atualizado");
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(404)
+        .json(
+          "erro ao tenta atualizar paciente, tente novamente mais tarde ou contate o suporte."
+        )
+    }
+  },
+
 
 };
 
