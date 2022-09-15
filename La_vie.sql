@@ -24,6 +24,8 @@ create table atendimento (
 atendimento_id integer not null primary key auto_increment,
 data_atendimento date not null,
 observacao varchar(245) not null,
+createdAt datetime NOT NULL,
+updatedAt datetime NOT NULL,
 paciente_id integer not null,
 constraint fk_paciente foreign key (paciente_id) references paciente(paciente_id)
 );
