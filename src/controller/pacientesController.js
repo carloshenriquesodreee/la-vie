@@ -65,7 +65,7 @@ const pacienteController = {
             paciente_id: id
           },
         });
-      res.status(204).json("Paciente Deletado");
+      res.json(`paciente ${id} deletado `);
 
     } catch (error) {
       console.log(error);

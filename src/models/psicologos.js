@@ -31,6 +31,7 @@ const Psicologos = db.define(
   },
   {
     tableName: "psicologo",
+    
 
   }
 );

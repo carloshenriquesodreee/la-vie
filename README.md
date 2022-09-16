@@ -41,7 +41,7 @@ psicólogos, pacientes e prontuários.</p>
 
 
 ## 👤 Grupo
-- Carlos Henrique
+- Carlos Henrique Sodre gomes
 - Irandy Paiva
 - Jessica Leal
 - Laura Santos
