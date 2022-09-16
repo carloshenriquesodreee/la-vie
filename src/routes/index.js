@@ -14,10 +14,10 @@ routes.get("/pacientes", pacienteController.listarPaciente);
 routes.post("/pacientes", pacienteController.registerPacientes);
 routes.delete("/pacientes/:id", pacienteController.deletarPaciente);
 
-routes.get("/psicologos/:id", psicologoController.listOne);
-routes.put("/psicologos/:id", psicologoController.updatePsicologo);
-routes.get("/psicologos", psicologoController.listarPsicologo);
-routes.post("/psicologos", psicologoCreateValidation, psicologoController.registro);
+routes.post("/psicologos", psicologoCreateValidation, psicologoController.novoPsicologo);
+routes.get("/psicologos/:id", psicologoController.retornaPsicologoPorId);
+routes.put("/psicologos/:id", psicologoController.atualizarPsicologo);
+routes.get("/psicologos", psicologoController.listarPsicologos);
 routes.delete("/psicologos/:id", psicologoController.deletarPsicologo);
 
 

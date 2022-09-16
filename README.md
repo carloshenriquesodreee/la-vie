@@ -11,6 +11,7 @@
 
 * [📋 Enunciado](#📋-enunciado)
 * [🖥 Tecnologias](#🖥-Tecnologias)
+* [🔍 Documentação API](#🔍-documentação-api-la-vie)
 * [👤 Grupo](#👤-grupo)
 
 ## 📋 Enunciado
@@ -33,6 +34,11 @@ psicólogos, pacientes e prontuários.</p>
 </div>
 
 <hr>
+
+## 🔍 Documentação API LA VIE
+ 
+ [Link](https://documenter.getpostman.com/view/23358684/2s7YfNBEzN) da documentação da nossa API 
+
 
 ## 👤 Grupo
 - Carlos Henrique
