@@ -9,13 +9,17 @@ const auth = require("../middlewares/auth")
 const routes = express.Router();
 
 routes.get("/paciente/:id", pacienteController.listOne);
-routes.put("/pacientes", pacienteController.updatePacientes);
+routes.put("/pacientes/:id", pacienteController.updatePacientes);
 routes.get("/pacientes", pacienteController.listarPaciente);
 routes.post("/pacientes", pacienteController.registerPacientes);
 routes.delete("/pacientes/:id", pacienteController.deletarPaciente);
 
+routes.get("/psicologos/:id", psicologoController.listOne);
+routes.put("/psicologos/:id", psicologoController.updatePsicologo);
 routes.get("/psicologos", psicologoController.listarPsicologo);
 routes.post("/psicologos", psicologoCreateValidation, psicologoController.registro);
+routes.delete("/psicologos/:id", psicologoController.deletarPsicologo);
+
 
 routes.get("/atendimentos", atendimentoController.listarAtendimentos);
 routes.get("/atendimentos/:id", atendimentoController.listarUmAtendimento);

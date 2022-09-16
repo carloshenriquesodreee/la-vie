@@ -14,7 +14,7 @@ const atendimentosController = {
     console.log(error);
     return res
     .status(404)
-    .json("Ocorreu algum erro, contate o suporte")
+    .json("Ocorreu algum erro, tente novamente mais tarde ou contate o suporte")
   };
   },
 

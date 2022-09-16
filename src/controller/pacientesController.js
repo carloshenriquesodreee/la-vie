@@ -65,35 +65,37 @@ const pacienteController = {
             paciente_id: id
           },
         });
-      res.json("Paciente Deletado");
+      res.status(204).json("Paciente Deletado");
 
     } catch (error) {
       console.log(error);
       return res
         .status(404)
         .json(
-          "erro ao deletar um paciente, tente novamente mais tarde ou contate o suporte."
+          "id não encontrado"
         )
     }
   },
   updatePacientes: async (req, res) => {
     try {
       const { id } = req.params;
-      const { paciente_id, nome, email, idade } = req.body
+      const {nome, email, idade } = req.body
       const pacienteAtualizado = await paciente.update(
         {
-          paciente_id,
           nome,
           email,
           idade
         },
         {
           where: {
-            paciente_id,
+            paciente_id: id,
           },
         }
       );
-      res.json("Paciente Atualizado");
+      const novoPaciente = await paciente.findByPk(id);
+
+      res.status(200).json(novoPaciente);
+
     } catch (error) {
       console.log(error);
       return res
@@ -103,8 +105,6 @@ const pacienteController = {
         )
     }
   },
-
-
 };
 
 module.exports = pacienteController;
