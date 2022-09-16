@@ -39,6 +39,8 @@ psicólogos, pacientes e prontuários.</p>
  
  [Link](https://documenter.getpostman.com/view/23358684/2s7YfNBEzN) da documentação da nossa API 
 
+ <img alt="la-vie" height="450" src="./docs/api.png">
+
 
 ## 👤 Grupo
 - Carlos Henrique Sodre gomes
